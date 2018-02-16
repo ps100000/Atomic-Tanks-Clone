@@ -1,0 +1,11 @@
+Requirements:
+	-SDL2 https://www.libsdl.org/download-2.0.php
+	-SDL_Image https://www.libsdl.org/projects/SDL_image/
+
+Building:
+	-Clone the repository:
+		git clone https://github.com/ps100000/Atomic-Tanks-Clon
+		cd Atomic-Tanks-Clon
+	-Build:
+		g++ -std=c++11 -c *.cpp
+		g++ *.o -o main.exe -lmingw32 -lSDL2main -lSDL2 -lSDL2_image
