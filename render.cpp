@@ -118,9 +118,7 @@ void render::update_world(){
 	SDL_RenderClear(renderer);
 	SDL_SetRenderDrawColor(renderer,0,255,0,255);
 	for(int i = 0; i < SCREEN_WIDTH; i++){
-		for(int j = 0; j < earth.get_high(i); j++){
-			SDL_RenderDrawPoint(renderer,i,SCREEN_HEIGHT - j);
-		}
+		SDL_RenderDrawLine(renderer,i,SCREEN_HEIGHT - earth.get_high(i),i,SCREEN_HEIGHT);
 	}
 	SDL_SetRenderDrawColor(renderer,0,0,0,0);
 }

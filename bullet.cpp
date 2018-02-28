@@ -222,8 +222,8 @@ b_missile_marker::b_missile_marker(vec2d pos,vec2d velocity, b_missile* m1_ptr, 
 	mov.init(pos,velocity);
 	texture.load_pic("./texturepack/marker.png");
 	vec2d temp;
-	temp.x = 4;
-	temp.y = 4;
+	temp.x = 3;
+	temp.y = 3;
 	texture.set_translation_point(temp);
 	texture.set_layer(2);
 	texture.set_visible(true);
@@ -267,7 +267,7 @@ b_missile::b_missile(vec2d pos,vec2d velocity){
 	mov1.init(pos,velocity);
 	texture.load_pic("./texturepack/missile.png");
 	vec2d temp;
-	temp.x = 4;
+	temp.x = 8;
 	temp.y = 4;
 	texture.set_translation_point(temp);
 	texture.set_layer(2);
@@ -281,13 +281,15 @@ bool b_missile::update(){
 	if(state == 0){
 		mov1.update();
 		vec2d temp = mov1.get_pos();
-
+		
 		if(temp.x < 0 || temp.x >= SCREEN_WIDTH || temp.y >= SCREEN_HEIGHT){
 			return false;
 		}	
 		if(det.check(temp)){
 			state = 1;
 		}
+		
+		texture.set_rotation(mov1.get_vel().getAngleDeg());
 		texture.set_translation(mov1.get_pos());
 		return true;
 	}else if(state == 2){
@@ -312,6 +314,7 @@ bool b_missile::update(){
 			exp.activate(temp);
 		return false;
 		}
+		texture.set_rotation(mov2.get_vel().getAngleDeg());
 		texture.set_translation(mov2.get_pos());
 		return true;
 	}
