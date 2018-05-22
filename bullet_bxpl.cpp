@@ -8,17 +8,6 @@ bx_circle::bx_circle():bx_circle(15){
 
 bx_circle::bx_circle(int r){
 	rad = r;
-	texture.load_pic("./texturepack/explode_circle.png");
-	vec2d temp;
-	temp.x = 0;
-	temp.y = 0;
-	texture.set_sector(temp,32,32);
-	temp.x = r;
-	temp.y = r;
-	texture.set_translation_point(temp);
-	texture.set_scale_x( (2.4 * r) / 32.0 );
-	texture.set_scale_y( (2.4 * r) / 32.0 );
-	texture.set_layer(3);
 }
 
 void bx_circle::activate(vec2d pos){
@@ -29,7 +18,10 @@ void bx_circle::activate(vec2d pos){
 	}
 	
 	for(int i = -rad; i <= rad; i++){
-		int y = SCREEN_HEIGHT - (( pos.y ) - i * i / rad + rad);/*pos.y -> SCREEN_HEIGHT - earth.get_high(pos.x + i)*/
+		int y = SCREEN_HEIGHT - (( pos.y ) - i * i / rad + rad);
+		if(y < SCREEN_HEIGHT - (( SCREEN_HEIGHT - earth.get_high(pos.x + i) ) - 2 * i * i / rad + rad)){
+			y = SCREEN_HEIGHT - (( SCREEN_HEIGHT - earth.get_high(pos.x + i) ) - 2 * i * i / rad + rad);
+		}
 		if(y < earth.get_high(pos.x + i)){
 			earth.set_high(pos.x + i,y);
 		}
@@ -38,17 +30,18 @@ void bx_circle::activate(vec2d pos){
 	main_renderer.update_world();
 	main_renderer.show();
 	
-	texture.set_translation(pos);
-	texture.set_visible(true);
+	animation* anim = new animation(".\\animation\\bx_circle.anm");
+	
 	vec2d temp;
-	temp.y = 0;
-	for(int i = 0; i < 4; i++){
-		temp.x = i * 32;
-		texture.set_sector(temp,32,32);
-		main_renderer.show();
-		SDL_Delay(100);
-	}
-	texture.set_visible(false);
+	temp.x = rad * 1.2;
+	temp.y = rad * 1.2;
+	anim->set_translation_point(temp);
+	anim->set_scale_x( (2.4 * rad) / 32.0 );
+	anim->set_scale_y( (2.4 * rad) / 32.0 );
+	anim->set_layer(3);
+	anim->set_translation(pos);
+	anim->set_visible(true);
+	anim->play(true);
 }
 
 void bx_circle::set_damage(int d){
@@ -66,7 +59,7 @@ void bx_circle::set_radius(int r){
 }
 
 bx_nuke::bx_nuke(){
-	texture.load_pic("./texturepack/nuke.png");
+	texture.load_pic(".\\texturepack\\nuke.png");
 	texture.set_layer(3);
 	vec2d temp;
 	temp.x = 80;

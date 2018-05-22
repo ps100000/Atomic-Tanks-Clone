@@ -14,9 +14,8 @@ bool quit;
 bool quit_in;
 
 int main(int argc, char* args[]){
-	
 	pic start;
-	start.load_pic("./texturepack/start.png");
+	start.load_pic(".\\texturepack\\start.png");
 	start.set_visible(true);
 	start.set_layer(4);
 	bool a = false;
@@ -87,7 +86,7 @@ int main(int argc, char* args[]){
 			}
 			
 			if(!players[0].alife()){
-				start.load_pic("./texturepack/victory1.png");
+				start.load_pic(".\\texturepack\\victory1.png");
 				start.set_visible(true);
 				start.set_layer(4);
 				menue.set_visible(false);
@@ -96,7 +95,7 @@ int main(int argc, char* args[]){
 				return 0;
 			}
 			if(!players[1].alife()){
-				start.load_pic("./texturepack/victory2.png");
+				start.load_pic(".\\texturepack\\victory2.png");
 				start.set_visible(true);
 				start.set_layer(4);
 				menue.set_visible(false);
@@ -104,7 +103,10 @@ int main(int argc, char* args[]){
 				SDL_Delay(5000);
 				return 0;
 			}
-			SDL_Delay(1000);
+			for(int i = 0; i < 50; i++){
+				main_renderer.show();
+				SDL_Delay(20);
+			}
 		}
 	}
 }

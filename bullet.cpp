@@ -17,7 +17,7 @@ b_std::b_std(){
 b_std::b_std(vec2d pos,vec2d velocity){
 	bullets.push_back(this);
 	mov.init(pos,velocity);
-	texture.load_pic("./texturepack/std_bullet.png");
+	texture.load_pic(".\\texturepack\\std_bullet.png");
 	vec2d temp;
 	temp.x = 4;
 	temp.y = 4;
@@ -64,7 +64,7 @@ b_sub_mine::b_sub_mine(){
 b_sub_mine::b_sub_mine(vec2d pos,vec2d velocity){
 	bullets.push_back(this);
 	mov.init(pos,velocity);
-	texture.load_pic("./texturepack/sub_mine.png");
+	texture.load_pic(".\\texturepack\\sub_mine.png");
 	vec2d temp;
 	temp.x = 4;
 	temp.y = 4;
@@ -118,7 +118,7 @@ b_bounce::b_bounce(vec2d pos,vec2d velocity):exp(12){
 	bullets.push_back(this);
 	exp.set_damage(8);
 	mov.init(pos,velocity);
-	texture.load_pic("./texturepack/bounce.png");
+	texture.load_pic(".\\texturepack\\bounce.png");
 	vec2d temp;
 	temp.x = 4;
 	temp.y = 4;
@@ -166,7 +166,7 @@ b_nuke::b_nuke(){
 b_nuke::b_nuke(vec2d pos,vec2d velocity){
 	bullets.push_back(this);
 	mov.init(pos,velocity);
-	texture.load_pic("./texturepack/marker.png");
+	texture.load_pic(".\\texturepack\\marker.png");
 	vec2d temp;
 	temp.x = 4;
 	temp.y = 4;
@@ -201,7 +201,7 @@ bool b_nuke::update(){
 			temp2.y = 0;
 			temp.y -= SCREEN_HEIGHT;
 			mov.init(temp, temp2);
-			texture.load_pic("./texturepack/nuke_bullet.png");
+			texture.load_pic(".\\texturepack\\nuke_bullet.png");
 			
 		}
 	
@@ -220,7 +220,7 @@ b_missile_marker::b_missile_marker(vec2d pos,vec2d velocity, b_missile* m1_ptr, 
 	m2 = m2_ptr;
 	bullets.push_back(this);
 	mov.init(pos,velocity);
-	texture.load_pic("./texturepack/marker.png");
+	texture.load_pic(".\\texturepack\\marker.png");
 	vec2d temp;
 	temp.x = 3;
 	temp.y = 3;
@@ -265,7 +265,7 @@ b_missile::b_missile(){
 b_missile::b_missile(vec2d pos,vec2d velocity){
 	bullets.push_back(this);
 	mov1.init(pos,velocity);
-	texture.load_pic("./texturepack/missile.png");
+	texture.load_pic(".\\texturepack\\missile.png");
 	vec2d temp;
 	temp.x = 8;
 	temp.y = 4;

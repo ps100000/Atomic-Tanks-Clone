@@ -157,6 +157,17 @@ void pic::set_visible(bool v){
 	return (1.0 * dest.h / src.h);
 }
 
+unsigned int pic::get_width(){
+	unsigned int w;
+	SDL_QueryTexture(texture,NULL,NULL,(int*)&w,NULL);
+	return w;
+}
+
+unsigned int pic::get_height(){
+	unsigned int h;
+	SDL_QueryTexture(texture,NULL,NULL,NULL,(int*)&h);
+	return h;
+}
 	
 void pic::set_sector(vec2d corner, int width, int high){
 	float sx = get_scale_x();

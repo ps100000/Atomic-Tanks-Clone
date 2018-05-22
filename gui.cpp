@@ -42,8 +42,8 @@ void gui::set_weapon(int w){//test
 
 
 gui::gui(){
-	main.load_pic("./texturepack/main_gui.png");
-	weapon.load_pic("./texturepack/weapons.png");
+	main.load_pic(".\\texturepack\\main_gui.png");
+	weapon.load_pic(".\\texturepack\\weapons.png");
 	vec2d temp;
 	temp.x = SCREEN_WIDTH / 2 - 112;
 	temp.y = SCREEN_HEIGHT - 32;

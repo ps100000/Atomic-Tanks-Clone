@@ -17,6 +17,21 @@ void render::delete_pic(pic* p){
 	}
 }
 
+void render::add_animation(animation* a){
+	animations.push_back(a);
+}
+
+
+void render::delete_animation(animation* a){
+	if(!animations.empty()){
+		for(int i = 0; i <animations.size() ; i++){
+			if(animations[i]->id == a->id){
+				animations.erase(animations.begin() + i);
+			}
+		}
+	}
+}
+
 render::render(){
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_TIMER) < 0)
 	{
@@ -109,8 +124,8 @@ render::~render(){
 	SDL_DestroyTexture(layers);
 	for(int i = 0; i < pictures.size(); i++){
 		delete pictures[i];
-		pictures.clear();
 	}
+	pictures.clear();
 }
 
 void render::update_world(){
@@ -126,6 +141,10 @@ void render::update_world(){
 void render::show(){
 	//printf("pictures.size() %d\n",pictures.size());
 	SDL_SetRenderTarget(renderer,background);
+	
+	for(int i = 0; i < animations.size(); i++){
+		animations[i]->update();
+	}
 	
 	for(int i = 0; i < pictures.size(); i++){
 		if((pictures[i]->layer == 0) && (pictures[i]->visible)){

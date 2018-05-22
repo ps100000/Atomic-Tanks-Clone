@@ -2,8 +2,8 @@
 
 player::player(){
 	
-	turret.load_pic("./texturepack/turret.png"); //128 x 8
-	body.load_pic("./texturepack/body.png"); //64 x 32
+	turret.load_pic(".\\texturepack\\turret.png"); //128 x 8
+	body.load_pic(".\\texturepack\\body.png"); //64 x 32
 	vec2d temp;
 	temp.x = 4;
 	temp.y = 26;

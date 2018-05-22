@@ -32,23 +32,26 @@ class pic{
 		int get_layer();
 		void set_layer(int l); //0 background 4gui
 		
-		 bool is_visible();
+		bool is_visible();
 		void set_visible(bool v);
 		
-		 void set_translation(vec2d t);
-		 vec2d get_translation();
-		 void set_translation_point(vec2d point);
-		 vec2d get_translation_point();
+		void set_translation(vec2d t);
+		vec2d get_translation();
+		void set_translation_point(vec2d point);
+		vec2d get_translation_point();
 		
-		 void set_rotation(float r);
-		 float get_rotation();
-		 void set_rotation_point(vec2d point);
-		 vec2d get_rotation_point();
+		void set_rotation(float r);
+		float get_rotation();
+		void set_rotation_point(vec2d point);
+		vec2d get_rotation_point();
 		
-		 void set_scale_x(float scale);
-		 void set_scale_y(float scale);
-		 float get_scale_x();
-		 float get_scale_y();
+		void set_scale_x(float scale);
+		void set_scale_y(float scale);
+		float get_scale_x();
+		float get_scale_y();
+		 
+		unsigned int get_width();
+		unsigned int get_height();
 		
 		void set_sector(vec2d corner, int width, int high);
 		
